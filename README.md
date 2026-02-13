@@ -1,89 +1,59 @@
-# Nav3Compose  navigacion de compose  navigacion 3 🚀
+# Nav3Compose - Mi Aventura con Navigation 3 en Jetpack Compose 🚀
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.9.22-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-1.6.7-blue)](https://developer.android.com/jetpack/compose)
+¡Hola! Este es mi proyecto personal donde exploro y pruebo las funcionalidades de **Navigation 3 para Jetpack Compose**. El objetivo es entender a fondo cómo funciona la navegación en el mundo declarativo de Compose y documentar mi aprendizaje a través de ejemplos prácticos.
 
+## Sobre este proyecto
 
-## NavigationCompose
-
-`NavigationCompose` es una biblioteca para Android Jetpack Compose que simplifica la navegación en tus aplicaciones. Inspirada en `Compose Destinations`, esta biblioteca se enfoca en hacer la navegación más intuitiva y fácil de gestionar.
-
-### Características
-
-- **Navegación sencilla**: Olvídate de complejas configuraciones. Con `NavigationCompose`, puedes navegar entre tus pantallas de forma clara y directa.
-- **Argumentos seguros**: Pasa datos entre tus pantallas de manera segura y sin errores.
-- **Animaciones personalizables**: Añade un toque de elegancia a tus transiciones con animaciones fluidas y personalizables.
-
-### Cómo funciona
-
-`NavigationCompose` utiliza un `NavHost` que gestiona las pantallas de tu aplicación. Cada pantalla es un `Composable` que se identifica con una `NavKey`. La navegación se realiza a través de un `NavController` que te permite añadir o quitar pantallas de la pila de navegación.
-
-### Instalación
-
-Para usar `NavigationCompose` en tu proyecto, añade la siguiente dependencia en tu archivo `build.gradle`:
-
-```gradle
-dependencies {
-    implementation("com.github.ArtemioD:Nav3Compose:1.0.1")
-}
-```
-
-### Ejemplos de uso
-
-A continuación, se muestran algunos ejemplos de cómo puedes usar `NavigationCompose` en tu aplicación.
-
-#### Navegación básica
-
-Para una navegación sencilla, puedes usar las funciones de extensión `navigateTo` y `back` que proporciona la biblioteca.
-
-```kotlin
-val backStack = rememberNavBackStack(HomeScreen)
-
-NavHost(backStack) { screen ->
-    when (screen) {
-        is HomeScreen -> HomeScreen(
-            navigateToDetail = { id -> backStack.navigateTo(DetailScreen(id)) }
-        )
-        is DetailScreen -> DetailScreen(
-            id = screen.id,
-            navigateBack = { backStack.back() }
-        )
-    }
-}
-```
-
-#### Navegación con argumentos
-
-`NavigationCompose` te permite pasar argumentos entre tus pantallas de forma segura. Simplemente, define los argumentos en tu `NavKey` y recíbelos en tu `Composable`.
-
-```kotlin
-@NavKey
-data class DetailScreen(val id: String)
-```
-
-#### Navegación con animaciones
-
-Puedes añadir animaciones a tus transiciones para mejorar la experiencia de usuario. `NavigationCompose` te permite personalizar las animaciones de entrada y salida de tus pantallas.
-
-```kotlin
-NavHost(
-    backStack = backStack,
-    transitionSpec = {
-        slideInHorizontally() togetherWith slideOutHorizontally()
-    }
-) { screen ->
-    // ...
-}
-```
-
-### Contribuciones
-
-Si quieres contribuir a `NavigationCompose`, ¡eres bienvenido! Puedes abrir un _issue_ para reportar un error o una _pull request_ para proponer una mejora.
-
-### Licencia
-
-`NavigationCompose` se distribuye bajo la licencia MIT. Consulta el archivo `LICENSE` para más información.
+Este repositorio contiene una colección de implementaciones que demuestran diferentes casos de uso de la navegación en Compose. Cada ejemplo está autocontenido en su propio paquete para que sea fácil de entender y seguir.
 
 ---
 
-_¡Gracias por usar `NavigationCompose`!_
+## Mis Ejemplos de Navegación
+
+Aquí están las pruebas que he realizado hasta ahora:
+
+### 1. Navegación Básica (`basic_navigation`)
+
+Este es el punto de partida. Un ejemplo simple que muestra cómo navegar de una pantalla a otra y volver.
+
+- **Qué se prueba aquí:**
+  - Configuración inicial del `NavHost`.
+  - Navegación a una nueva pantalla con `navigateTo()`.
+  - Regresar a la pantalla anterior con `back()`.
+
+
+### 2. Navegación Intermedia (`medium_navigation`)
+
+Aquí subimos un poco el nivel. Este ejemplo se enfoca en pasar datos entre pantallas de una manera segura y cómo manejar la pila de navegación de forma más precisa.
+
+- **Qué se prueba aquí:**
+  - Pasar argumentos (como un ID) a otra pantalla.
+  - Volver a una pantalla específica en la pila de navegación con `backTo()`.
+
+
+### 3. Navegación Avanzada (`advance_navigation`)
+
+Este ejemplo explora escenarios más complejos, como la navegación condicional y la gestión de flujos de autenticación.
+
+- **Qué se prueba aquí:**
+  - Rutas anidadas y flujos de navegación (por ejemplo, un flujo de login).
+  - Navegación condicional: decidir a qué pantalla ir basado en un estado (ej. si el usuario está logueado).
+
+
+### 4. Navegación con Animaciones (`animation_navigation`)
+
+¡Hagamos que se vea bien! Este ejemplo se centra en cómo añadir animaciones personalizadas a las transiciones entre pantallas para una experiencia de usuario más fluida y atractiva.
+
+- **Qué se prueba aquí:**
+  - Aplicar transiciones de entrada y salida (`slide`, `fade`, etc.).
+  - Personalizar la duración y el tipo de animación.
+
+---
+
+## ¿Cómo probarlo?
+
+1.  Clona este repositorio.
+2.  Abre el proyecto en Android Studio.
+3.  En `MainActivity.kt`, descomenta la línea del ejemplo que quieras probar (ej. `BasicNavigationWrapper()`).
+4.  ¡Ejecuta la app!
+
