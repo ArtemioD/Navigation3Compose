@@ -1,4 +1,4 @@
-# Nav3Compose - Mi Aventura con Navigation 3 en Jetpack Compose 🚀
+# Nav3Compose - Navigation 3 en Jetpack Compose 🚀
 
 ¡Hola! Este es mi proyecto personal donde exploro y pruebo las funcionalidades de **Navigation 3 para Jetpack Compose**. El objetivo es entender a fondo cómo funciona la navegación en el mundo declarativo de Compose y documentar mi aprendizaje a través de ejemplos prácticos.
 
